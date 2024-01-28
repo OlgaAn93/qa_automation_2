@@ -1,13 +1,16 @@
-import { test, expect, defineConfig } from '@playwright/test';
+import {expect, type Locator, type Page} from '@playwright/test';
 
 class BasePage {
-    static async pause(milliseconds) {
+    /*page: Page;
+
+    constructor(pageParam: Page) {
+        this.page = pageParam;
+    }; */
+
+    static async pause(page: Page, milliseconds: number) {
         await page.waitForTimeout(milliseconds);
     }
 
-    static logInfo(message) {
-        logger.log(message);
-    }
 }
 
 export default BasePage;

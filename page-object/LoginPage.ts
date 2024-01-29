@@ -7,23 +7,23 @@ class LoginPage extends BasePage {
     } */
     static async login(page: Page, username: string, password: string) {
 
-        await page.goto('/');
+        await page.goto('/practice-test-login');
 
-        await page.getByText('Login').click();
+        //await page.getByText('Login').click();
 
-        await page.locator('#email').fill(username);
+        await page.locator('#username').fill(username);
 
         await page.locator('#password').fill(password);
 
-        await page.getByText('Sign in').click();
+        await page.locator('#submit').click();
     };
 
     static async logout(page: Page) {
-        await page.getByText('Sign out').click();
+        await page.getByText('Log out').click();
     };
 
     static async clearInput(page: Page) {
-        await page.locator('#email').clear();
+        await page.locator('#username').clear();
         await page.locator('#password').clear();
 	}
 }

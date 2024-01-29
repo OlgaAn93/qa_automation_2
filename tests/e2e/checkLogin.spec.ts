@@ -7,26 +7,26 @@ var password = process.env.DEFAULT_PASSWORD||'';
 test('login', async ({ page }) => {
     await LoginPage.login(page, username, password);
 
-    console.log(page);
-
-    await expect(page.getByText(`E-mail: ${username}`)).toBeVisible();
+    await expect(page.getByText('practicetestautomation.com/logged-in-successfully/')).toBeVisible();
 });
 
 test('logout', async ({ page }) => {
+    await LoginPage.login(page, username, password);
+
     await LoginPage.logout(page);
 
-    expect(page.getByRole('button', { name: 'Login' })).toBeVisible();
+    await expect(page.getByText('Test login')).toBeVisible();
 });
 
 test('should try to login with invalid credentials - username', async({page}) => {
-    await LoginPage.login(page,'invalid@login.com', 'Test1234');
-    await expect(page.getByText('These credentials do not match our records.')).toBeVisible();
+    await LoginPage.login(page,'incorrectUser', password);
+    await expect(await page.getByText('Your username is invalid!').count()).toBeGreaterThan(1);
     await LoginPage.clearInput(page);
 });
 
 test('should try to login with invalid credentials - both username & password', async({page}) => {
-    await LoginPage.login(page,'invalid@login.com', 'Invalid');
-    await expect(page.getByText('These credentials do not match our records.')).toBeVisible();
+    await LoginPage.login(page, username, 'incorrectPassword');
+    await expect(page.getByText('Your password is invalid!')).toBeVisible();
 });
 
 

@@ -55,7 +55,7 @@ export default defineConfig({
     {
       name: 'UI-staging',
       use: {
-        baseURL: 'https://warsawsneakerstore.com/en',
+        baseURL: 'https://practicetestautomation.com/',
       },
     },
     {

@@ -59,6 +59,12 @@ export default defineConfig({
       },
     },
     {
+      name: 'UI-staging1',
+      use: {
+        baseURL: 'https://demoqa.com',
+      },
+    },
+    {
       name: 'API-staging',
       use: {
         baseURL: 'https://reqres.in/api',

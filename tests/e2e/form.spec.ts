@@ -11,7 +11,7 @@ test.beforeEach(async ({ page }) => {
     await page.goto('/automation-practice-form');
 });
 
-test.only('fill form correctly', async ({ page }) => {
+test('fill form correctly', async ({ page }) => {
     await FormPage.fillForm(page, firstNameTest, lastNameTest, email, mobNumber, address);
     await expect(page.getByText('Thanks for submitting the form')).toBeVisible();
     await page.waitForSelector('[class="table table-dark table-striped table-bordered table-hover"]');
@@ -22,7 +22,7 @@ test.only('fill form correctly', async ({ page }) => {
     await expect(page.getByText(address)).toBeVisible();
 });
 
-test.only('fill form incorrectly with no name, lastname, email, phone number and address', async ({ page }) => {
+test('fill form incorrectly with no name, lastname, email, phone number and address', async ({ page }) => {
     await FormPage.fillForm(page, '', '', '', '', '');
     await expect(page.getByText('Thanks for submitting the form')).not.toBeVisible();
 

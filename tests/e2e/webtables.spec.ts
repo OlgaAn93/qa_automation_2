@@ -23,7 +23,7 @@ test.beforeEach(async ({ page }) => {
     await page.goto('/webtables');
 });
 
-test.only('add new record', async ({ page }) => {
+test('add new record', async ({ page }) => {
     await WebTablesPage.addNewRecord(page, firstNameTest, lastNameTest, email, age, salary, department);
     await expect(page.getByText(firstNameTest)).toBeVisible();
     await expect(page.getByText(lastNameTest)).toBeVisible();
@@ -33,12 +33,12 @@ test.only('add new record', async ({ page }) => {
     await expect(page.getByText(department)).toBeVisible();
 });
 
-test.only('search new record by name', async ({ page }) => {
+test('search new record by name', async ({ page }) => {
     await WebTablesPage.searchRecord(page, firstNameTest); 
     await expect(page.getByText(firstNameTest)).toBeVisible();
 });
 
-test.only('clear searchbox', async ({ page }) => {
+test('clear searchbox', async ({ page }) => {
     await WebTablesPage.clearInput(page);
     await expect(WebTablesPage.searchBox).toBeEmpty();
 });

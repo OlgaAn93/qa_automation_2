@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 import LoginPage from "../../page-object/LoginPage1";
 
 var username = process.env.DEFAULT_USERNAME1||'';
-var password = process.env.DEFAULT_PASSWORD2||'';
+var password = process.env.DEFAULT_PASSWORD1||'';
 
 test('login', async ({ page }) => {
     await LoginPage.login(page, username, password);
